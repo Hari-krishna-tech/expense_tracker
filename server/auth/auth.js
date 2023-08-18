@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
 
 
         } else {
-            res.status(400).res.send('Username or password incorrect');
+            res.status(400).send('Username or password incorrect');
         }
     } else {
         res.status(400).res.send('Username or password missing');
