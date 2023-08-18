@@ -14,27 +14,24 @@ router.post('/login', async (req, res) => {
     const cookieExpiration = Date.now() + expirationSeconds * 1000;
 
     // Check if username and password are set
-    if (username && password) {
+    if (email && password) {
         // Check if user with the same credentials exists in the database
         const expenseTracker = await  ExpenseTracker.findOne({ email: email })
-        if (user) {
+        if (expenseTracker) {
             // Generate an access token
-            const accessToken = jwt.sign({email}, process.env.JWT_SECRET);
+            const accessToken = jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '7d'});
             
             // Send the access token to the client inside a cookie
-            res.cookie('token', accessToken, {
-                expires: new Date(cookieExpiration),
-                httpOnly: true,
-            });
+            res.status(200).json({token: accessToken});
 
-            res.send('You are logged in');
+           
 
 
         } else {
-            res.send('Username or password incorrect');
+            res.status(400).res.send('Username or password incorrect');
         }
     } else {
-        res.send('Username or password missing');
+        res.status(400).res.send('Username or password missing');
     }
 });
 
@@ -47,22 +44,17 @@ router.post('/signup', async (req, res) => {
     if (username && password) {
         // Check if user with the same username exists in the database
         const expenseTracker = await ExpenseTracker.findOne({ email })
-        if (user) {
-            res.send('Tracker Already Exists');
+        if (expenseTracker) {
+            res.status(400).send('Tracker Already Exists');
         } else {
             // Create a new user
             const expenseTracker = new ExpenseTracker({ username, email, password });
             await expenseTracker.save();
-
-            res.cookie('token', accessToken, {
-                expires: new Date(cookieExpiration),
-                httpOnly: true,
-            });
-
-            res.send('User created');
+            const accessToken = jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '7d'});
+            res.status(200).send({token: accessToken});
         }
     } else {
-        res.send('Username or password missing');
+        res.status(400).send('Username or password missing');
     }
 });
 
