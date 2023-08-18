@@ -21,7 +21,7 @@ const Home = () => {
     }
     useEffect(()=>{
         const getUser = async ()=>{
-            const result = await axios.get("http://localhost:8000/api/expense", {
+            const result = await axios.get("http://13.235.135.233:8000/api/expense", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

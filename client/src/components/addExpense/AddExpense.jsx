@@ -11,7 +11,7 @@ const AddExpense = ({changeReRender}) => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setType(prev=>prev.toLowerCase());
-        const response = await axios.post('http://localhost:8000/api/create', {type, amount}, {
+        const response = await axios.post('http://13.235.135.233:8000/api/create', {type, amount}, {
             headers: {
                 "authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"

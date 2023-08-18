@@ -12,7 +12,7 @@ const Signup = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
 
-        const response = await axios.post('http://localhost:8000/api/signup', {username, password, email});
+        const response = await axios.post('http://13.235.135.233:8000/api/signup', {username, password, email});
         if(response.data.token) {
             Cookies.set('token', response.data.token);
         }
