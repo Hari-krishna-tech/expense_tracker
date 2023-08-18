@@ -13,7 +13,6 @@ const Signup = () => {
         e.preventDefault();
 
         const response = await axios.post('http://localhost:8000/api/signup', {username, password, email});
-        Cookies.set('token', response.data.token, { secure: true, sameSite: 'strict' });
         history.push('/home');
     }
 

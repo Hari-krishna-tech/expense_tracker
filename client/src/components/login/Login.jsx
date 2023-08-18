@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
-import Cookies from 'js-cookie';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ const Login = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         const response = await axios.post('http://localhost:8000/api/login', {email, password});
-        Cookies.set('token', response.data.token, { secure: true, sameSite: 'strict' });
+
         history.push('/home');
     }
 
