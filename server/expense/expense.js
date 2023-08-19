@@ -24,7 +24,10 @@ router.post("/categories", authMiddleware, async (req, res) => {
   const { email } = req;
 
   try {
-    const expenseTracker = await ExpenseTracker.findOneAndUpdate({email}, {$push: {categories: req.body.category}}, {new: true});
+    const expenseTracker = await ExpenseTracker.findOne({email});
+
+    expenseTracker.categories.push(req.body.category);
+    await expenseTracker.save();
 
     res.json(expenseTracker.categories);
 

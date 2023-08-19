@@ -1,16 +1,21 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios';
+
 import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Chart} from 'react-google-charts'
 
 import AddExpense from '../addExpense/AddExpense';
+import { getCategories, getExpenses } from '../../api/api.js';
+import AddCategory from '../addCategory/AddCategory';
+
+
 
 const Home = () => {
     
     const history = useHistory();
     const [data, setData] = useState([["Type", "Amount"]]);
     const token = Cookies.get('token');
+    const [categories, setCategories] = useState([]);
     const options = {
         title: "My Expenses",
     }
@@ -19,15 +24,14 @@ const Home = () => {
     const changeReRender = () => {
         setReRender(!reRender);
     }
+    const add = (category) => {
+        setCategories([...categories, category]);
+    }
     useEffect(()=>{
         const getUser = async ()=>{
-            const result = await axios.get("http://13.235.135.233:8000/api/expense", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const expenses = result.data;
-            console.log(expenses)
+            const expenses = await getExpenses(token);
+            const categories = await getCategories(token);
+            setCategories(categories);
             setData([["Type", "Amount"]])
             Object.keys(expenses).forEach((key)=>{
                 const expense = expenses[key].totalAmount;
@@ -41,7 +45,8 @@ const Home = () => {
     }, [reRender]);
     return (  
         <div>
-        <AddExpense changeReRender={changeReRender}/>
+        <AddCategory  add={add}/>
+        <AddExpense categories={categories} changeReRender={changeReRender}/>
 
         
         <Chart 

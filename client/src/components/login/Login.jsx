@@ -1,9 +1,8 @@
 import {useState} from 'react';
-import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-
+import { loginUser } from '../../api/api.js';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,9 +12,9 @@ const Login = () => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        const response = await axios.post('http://13.235.135.233:8000/api/login', {email, password});
-        if(response.data.token) {
-            Cookies.set('token', response.data.token);
+        const data = await loginUser({email, password});
+        if(data.token) {
+            Cookies.set('token',data.token);
         }
         
         history.push('/home');

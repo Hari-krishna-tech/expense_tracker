@@ -1,41 +1,48 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 
+import {createExpense} from '../../api/api.js';
+import './AddExpense.css';
 
-const AddExpense = ({changeReRender}) => {
+const AddExpense = ({ categories , changeReRender}) => {
 
-    const [type, setType] = useState('');
-    const [amount, setAmount] = useState(0);
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [amount, setAmount] = useState("");
     const token = Cookies.get('token');
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+    }
+
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        setType(prev=>prev.toLowerCase());
-        const response = await axios.post('http://13.235.135.233:8000/api/create', {type, amount}, {
-            headers: {
-                "authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-                
-                
-            }
-        });
-        console.log(response.data)
-        if(response.data) {
+        const type = selectedCategory.toLowerCase();
+        const data = await createExpense({type, amount} , token);
+        
+        if(data) {
             changeReRender();
         }
-        setType('');
-        setAmount(0);
+        setSelectedCategory('');
+        setAmount("");
     }
 
     return (
         <div>
             <h1>Add Expense</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="type">Type</label>
-                <input type="text" name="type" value={type} onChange={e=>setType(e.target.value)}/>
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+                <option value="">Select an Category</option>
+                {categories.map((category, index) => (
+                    <option key={index} value={category}>
+                        {category}
+                    </option>
+                ))}
+            </select>
+            <p>Selected Category: {selectedCategory}</p>
+                
                 <label htmlFor="amount">Amount</label>
-                <input type="number" name="amount" onChange={e=>setAmount(e.target.value)}/>
-                <button type="submit">Add Expense</button>
+                <input type="number" name="amount" value={amount} onChange={e=>setAmount(e.target.value)}/>
+               <br></br> <button type="submit">Add Expense</button>
             </form>
         </div>
     );
