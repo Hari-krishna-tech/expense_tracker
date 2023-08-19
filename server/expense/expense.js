@@ -54,15 +54,46 @@ router.delete("/categories", authMiddleware, async (req, res) => {
 
 });
 
+router.get("/expensetotal", authMiddleware, async (req, res) => {
+  const { email } = req;
+  try {
+    const expenseTracker = await ExpenseTracker.findOne({ email });
+    const expenses = expenseTracker.expense;
+    const aggregatedExpenses = {};
+
+    expenses.forEach((expense) => {
+      if (!aggregatedExpenses[expense.type]) {
+        aggregatedExpenses[expense.type] = {
+          totalAmount: expense.amount,
+        };
+      } else {
+        aggregatedExpenses[expense.type].totalAmount += expense.amount;
+      }
+    });
+
+    res.json(aggregatedExpenses);
+
+  } catch(error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+
+});
+
 router.get('/expense', authMiddleware, async (req, res) => {
-    const { email, year } = req;
-    const currentYear = new Date().getFullYear() ;
+    const { email } = req;
+    const { month, year } = req.body;
+    
+    if(!month || !year) return res.status(400).send('Invalid request');
     try {
         const expenseTracker = await ExpenseTracker.findOne({ email });
         const aggregatedExpenses = {};
         const expenses = expenseTracker.expense;
 
-        expenses.forEach((expense) => {
+        const filteredExpenses = expenses.filter((expense) => {
+          return expense.date.getFullYear() === year && expense.date.getMonth() + 1 === month;
+        });
+        
+        filteredExpenses.forEach((expense) => {
           if (!aggregatedExpenses[expense.type]) {
             aggregatedExpenses[expense.type] = {
               totalAmount: expense.amount,

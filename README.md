@@ -9,9 +9,9 @@
 
 
 ## Todos 
-    - Expense Categories:
+    [x] Expense Categories:
         Instead of just a free-form "type of expense," consider creating predefined categories like "Food," "Transportation," "Entertainment," etc. This will help users categorize their expenses consistently, making it easier to analyze spending patterns.
-    - Date and Time Stamp:
+    [x] Date and Time Stamp:
         Include a date and time stamp for each expense entry. This can help users track when each expense was made, making it easier to understand spending trends over time.
     - Expense History and Trends:
         Create a history section that displays past expenses over time. Visualize trends and patterns using line charts or bar graphs to help users understand their spending habits.  
