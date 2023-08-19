@@ -7,6 +7,7 @@ import { Chart} from 'react-google-charts'
 import AddExpense from '../addExpense/AddExpense';
 import { getCategories } from '../../api/api.js';
 import AddCategory from '../addCategory/AddCategory';
+import Nav from '../Nav/Nav.jsx';
 
 
 
@@ -36,6 +37,7 @@ const Home = () => {
     }, [reRender]);
     return (  
         <div>
+        <Nav/>
         <AddCategory  add={add}/>
         <AddExpense categories={categories} changeReRender={changeReRender}/>
 

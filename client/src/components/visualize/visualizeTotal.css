@@ -1,0 +1,36 @@
+
+
+
+.visualize_total .selector{
+    display: flex;
+    flex-direction: row;
+    
+    
+
+}
+
+.visualize_total .selector .pie_chart{
+    text-align: center;
+    margin: 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.visualize_total .selector .bar_graph {
+    text-align: center;
+    margin: 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.visualize_total .selector #select {
+    background-color: aqua;
+}

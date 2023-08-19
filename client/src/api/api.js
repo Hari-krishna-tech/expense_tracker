@@ -90,3 +90,16 @@ export const createExpense = async (expense, token) => {
         console.log(error);
     }
 }
+
+export const getUserName = async (token) => {
+    try {
+        const { data } = await api.get('/username', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}

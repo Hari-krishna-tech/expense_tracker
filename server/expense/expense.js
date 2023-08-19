@@ -134,7 +134,16 @@ router.post('/create',authMiddleware, async (req, res) => {
     }
 });
 
-
+router.get("/username", authMiddleware, async (req, res) => {
+  const { email } = req;
+  try {
+    const expenseTracker = await ExpenseTracker.findOne({ email });
+    const username = expenseTracker.username;
+    res.json(username);
+  } catch(error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
 
 
 export default router;

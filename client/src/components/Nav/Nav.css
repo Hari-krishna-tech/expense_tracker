@@ -1,0 +1,25 @@
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav .logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-right: 5rem;
+}
+
+.nav .link {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav .link:hover {
+    color: #84b6c5;
+}
+
+.nav .logout {
+    cursor: pointer;
+}
