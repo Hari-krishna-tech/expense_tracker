@@ -6,6 +6,51 @@ import { ExpenseModel } from '../model/ExpenseTracker.js';
 
 const router = express.Router();
 
+
+router.get('/categories', authMiddleware, async (req, res) => {
+  const { email } = req;
+  try {
+    const expenseTracker = await ExpenseTracker.findOne({ email });
+    const categories = expenseTracker.categories;
+    res.json(categories);
+
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+
+});
+
+router.post("/categories", authMiddleware, async (req, res) => {
+  const { email } = req;
+
+  try {
+    const expenseTracker = await ExpenseTracker.findOneAndUpdate({email}, {$push: {categories: req.body.category}}, {new: true});
+
+    res.json(expenseTracker.categories);
+
+  } catch(error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+router.delete("/categories", authMiddleware, async (req, res) => {
+  const { email } = req;
+  const { index } = req.body;
+
+  try {
+    const expenseTracker = await ExpenseTracker.findOne({email});
+
+    expenseTracker.categories.splice(index, 1);
+    await expenseTracker.save();
+
+    res.json(expenseTracker.categories);
+
+  } catch(error) {
+    res.status(500).json({ message: 'Server Error' });
+  }
+
+});
+
 router.get('/expense', authMiddleware, async (req, res) => {
     const { email, year } = req;
     const currentYear = new Date().getFullYear() ;

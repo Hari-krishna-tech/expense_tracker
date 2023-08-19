@@ -16,7 +16,8 @@ const expenseTrackerSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  expense: [Expense]
+  expense: [Expense],
+  categories: [String],
 });
 
 expenseTrackerSchema.pre('save', function (next) {
