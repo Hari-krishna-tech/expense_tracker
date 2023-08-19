@@ -79,8 +79,9 @@ router.get("/expensetotal", authMiddleware, async (req, res) => {
 
 });
 
-router.get('/expense', authMiddleware, async (req, res) => {
+router.post('/expense', authMiddleware, async (req, res) => {
     const { email } = req;
+    //console.log(req)
     const { month, year } = req.body;
     
     if(!month || !year) return res.status(400).send('Invalid request');

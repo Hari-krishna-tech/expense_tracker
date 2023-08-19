@@ -1,0 +1,36 @@
+
+
+.visualize .selector{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.visualize .selector .total {
+    text-align: center;
+    margin: 0 10px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.visualize .selector .monthly {
+    text-align: center;
+    margin: 0 10px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 10px;
+    width: 100px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.visualize .selector #select {
+    background-color: aqua;
+}
