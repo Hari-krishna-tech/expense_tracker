@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { Chart} from 'react-google-charts'
+
 
 import AddExpense from '../addExpense/AddExpense';
 import { getCategories } from '../../api/api.js';

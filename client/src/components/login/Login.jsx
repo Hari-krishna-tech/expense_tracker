@@ -7,14 +7,21 @@ import { loginUser } from '../../api/api.js';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+    const token = Cookies.get('token');
     const history = useHistory();
+    console.log(token);
+    if(token) {
+        history.push('/home');
+    }
+    
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
         const data = await loginUser({email, password});
-        if(data.token) {
+        if(data && data.token) {
             Cookies.set('token',data.token);
+        } else {
+            return;
         }
         
         history.push('/home');

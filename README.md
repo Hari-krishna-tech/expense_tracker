@@ -17,3 +17,7 @@
         Create a history section that displays past expenses over time. Visualize trends and patterns using line charts or bar graphs to help users understand their spending habits.  
     - Data Visualization:
         You mentioned a pie chart, which is a great start. Consider adding other types of visualizations like bar charts, line charts, and histograms to provide users with a comprehensive view of their spending.
+
+
+#dockerized 
+[article](https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/)

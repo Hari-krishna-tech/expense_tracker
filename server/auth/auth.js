@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-
+    //console.log(email, password)
     const expirationSeconds = 60 * 60 * 24 * 7; // one week
     const cookieExpiration = Date.now() + expirationSeconds * 1000;
 

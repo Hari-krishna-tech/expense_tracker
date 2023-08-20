@@ -14,8 +14,10 @@ const Signup = () => {
         e.preventDefault();
 
         const data = await registerUser({username, password, email});
-        if(data.token) {
+        if(data && data.token) {
             Cookies.set('token', data.token);
+        } else {
+            return;
         }
     
         history.push('/home');
