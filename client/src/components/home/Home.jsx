@@ -8,7 +8,7 @@ import AddExpense from '../addExpense/AddExpense';
 import { getCategories } from '../../api/api.js';
 import AddCategory from '../addCategory/AddCategory';
 import Nav from '../Nav/Nav.jsx';
-
+import "./Home.css"
 
 
 const Home = () => {
@@ -36,13 +36,15 @@ const Home = () => {
         getUser();
     }, [reRender]);
     return (  
-        <div>
+        <div >
         <Nav/>
-        <AddCategory  add={add}/>
-        <AddExpense categories={categories} changeReRender={changeReRender}/>
-
-        <button onClick={()=>history.push('/visualize')}>Visualize</button>
-        
+            <div className='home'>
+        <div className="sections">
+        <AddCategory className="add-category"  add={add}/>
+        <AddExpense className="add-expense" categories={categories} changeReRender={changeReRender}/>
+        </div>
+        <button className='visualize' onClick={()=>history.push('/visualize')}>Visualize</button>
+            </div>
         </div>
     );
     }

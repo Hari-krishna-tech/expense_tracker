@@ -1,0 +1,41 @@
+/* Home container */
+.home {
+    background-color: #f7f7f7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+
+
+.home  .sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* AddCategory and AddExpense */
+  .add-category,
+  .add-expense {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  /* Visualize button */
+ .home .visualize {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+.home  .visualize:hover {
+    background-color: #0056b3;
+  }
+
+  

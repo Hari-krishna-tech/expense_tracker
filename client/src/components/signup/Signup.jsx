@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 import { registerUser } from "../../api/api.js";
+import './Signup.css';
 
 const Signup = () => {
     const [username, setUsername] = useState('');
@@ -30,11 +31,13 @@ const Signup = () => {
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input type="text" name="username" onChange={e=>setUsername(e.target.value)} />
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" onChange={e=>setEmail(e.target.value)}/>
+                
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" onChange={e=>setPassword(e.target.value)} />
 
-                <label htmlFor="email">Email</label>
-                <input type="email" name="email" onChange={e=>setEmail(e.target.value)}/>
+                
                 <button type="submit">Signup</button>
             </form>
             <button onClick={()=>history.push('/login')}>Login</button>

@@ -38,7 +38,7 @@ const Nav = () => {
 
         <p>hi {username}!</p>
 
-        <div className="logout link" onClick={handleLogout}>logout</div>
+        <div className="logout link" onClick={handleLogout}>Logout</div>
         </div>
     );
     }

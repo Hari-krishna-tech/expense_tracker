@@ -3,6 +3,7 @@
 import {useState} from 'react';
 import { addCategory } from '../../api/api.js';
 import Cookies from 'js-cookie';
+import './AddCategory.css';
 
 
 const AddCategory = ({add}) => {
@@ -10,6 +11,9 @@ const AddCategory = ({add}) => {
     const token = Cookies.get('token');
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        if(category === "") {
+            return;
+        }
         try {
             const data = await addCategory({category}, token);
             if(data) {
@@ -23,7 +27,7 @@ const AddCategory = ({add}) => {
     }
 
     return (
-        <div className="add-category">
+        <div className="AddCategory">
             <h1>Add Category</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="category">Category</label>

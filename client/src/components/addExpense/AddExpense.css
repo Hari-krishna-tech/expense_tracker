@@ -8,3 +8,101 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+
+.AddExpense {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* AddExpense title */
+.AddExpense h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Category select */
+.category-select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Selected category display */
+.AddExpense p {
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+/* Form label */
+.AddExpense label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Form input */
+.AddExpense input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Submit button */
+.AddExpense button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.AddExpense button:hover {
+  background-color: #0056b3;
+}
+
+
+/* Select Category container */
+.select-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Category select */
+.category-select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.category-select select {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.category-select select:focus {
+  border: none;
+}
+
+/* Selected category display */
+.select-category p {
+  font-size: 14px;
+  margin: 5px 0;
+  margin-left: 0;
+}

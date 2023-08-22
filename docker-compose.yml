@@ -1,32 +1,25 @@
-version: '3.8'
-
+version: '3'
 services:
-  nginx: 
-    depends_on:
-      - api
-      - client
-    restart: always
+  client:
     build:
-      dockerfile: Dockerfile
-      context: ./nginx
-    ports:
-      - "80:80"
-  api:
-    build: 
-      dockerfile: Dockerfile
-      context: "./server"
-    volumes:
-      - /app/node_modules
-      - ./server:/app
-
-  
-  client: 
-    stdin_open: true
-    
-    build:
-      dockerfile: Dockerfile
       context: ./client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+      dockerfile: Dockerfile
+    depends_on:
+      - server
 
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:8000"  # Map host port 3001 to container port 8000
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"  # Map host port 80 to container port 80
+    volumes:
+      - ./nginx-config:/etc/nginx/conf.d  # Mount the NGINX configuration
+      - ./client/build:/var/www/html  # Mount the built React app
+    depends_on:
+      - client

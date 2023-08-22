@@ -20,28 +20,38 @@ const VisualizeMontly = () => {
         title: "My Expenses",
     }
 
+    const barOptions = {
+        title: "My Expenses",
+        hAxis: {
+            title: 'Amount',
+            minValue: 0,
+        },
+        vAxis: {
+            title: 'Type',
+        },
+    }
+
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        console.log("month", month);
+        console.log("year", year);
         const expenses = await getExpenses({month, year},token);
-        
+        console.log("expense" ,expenses)
+
             setData([["Type", "Amount"]])
-            Object.keys(expenses).forEach((key)=>{
-                const expense = expenses[key].totalAmount;
-                console.log(expense);
-                console.log(key)
-                
+        Object.keys(expenses).forEach((key)=>{
+            const expense = parseInt(expenses[key].totalAmount);
                 setData((prevData)=>[...prevData, [key, expense]]);
             });
     }
 
-
     useEffect(()=>{
         const getData = async ()=>{
             const expenses = await getExpenses({month, year},token);
-        
+
             setData([["Type", "Amount"]])
             Object.keys(expenses).forEach((key)=>{
-                const expense = expenses[key].totalAmount;
+                const expense = parseInt(expenses[key].totalAmount);
                 console.log(expense);
                 console.log(key)
                 
@@ -55,9 +65,9 @@ const VisualizeMontly = () => {
     
     return (
         <div className="visualize_monthly">
-            <div>
+            <div className="date_selector">
                 <form onSubmit={handleSubmit}>
-                <select value={month} onChange={(e)=>setMonth(e.target.value)}>
+                <select value={month} onChange={(e)=>setMonth(parseInt(e.target.value))}>
                     <option value="1">January</option>
                     <option value="2">Febuary</option>
                     <option value="3">March</option>
@@ -71,7 +81,7 @@ const VisualizeMontly = () => {
                     <option value="11">November</option>
                     <option value="12" >December</option>
                 </select>
-                <select value={year} onChange={(e)=>setYear(e.target.value)}>
+                <select value={year} onChange={(e)=>setYear(parseInt(e.target.value))}>
 
                     <option>2010</option>
                     <option>2011</option>
@@ -116,7 +126,7 @@ const VisualizeMontly = () => {
             <Chart
                 chartType="BarChart"
                 data={data}
-                options={options}
+                options={barOptions}
                 width={"100%"}
                 height={"400px"}
             />

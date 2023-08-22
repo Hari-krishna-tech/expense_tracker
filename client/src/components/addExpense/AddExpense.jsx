@@ -16,6 +16,9 @@ const AddExpense = ({ categories , changeReRender}) => {
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        if(amount === ""|| selectedCategory === "") {
+            return;
+        }
         const type = selectedCategory.toLowerCase();
         const data = await createExpense({type, amount} , token);
         
@@ -27,9 +30,10 @@ const AddExpense = ({ categories , changeReRender}) => {
     }
 
     return (
-        <div>
+        <div className='AddExpense'>
             <h1>Add Expense</h1>
             <form onSubmit={handleSubmit}>
+            <div className="select-category">
             <select value={selectedCategory} onChange={handleCategoryChange}>
                 <option value="">Select an Category</option>
                 {categories.map((category, index) => (
@@ -39,7 +43,7 @@ const AddExpense = ({ categories , changeReRender}) => {
                 ))}
             </select>
             <p>Selected Category: {selectedCategory}</p>
-                
+            </div>
                 <label htmlFor="amount">Amount</label>
                 <input type="number" name="amount" value={amount} onChange={e=>setAmount(e.target.value)}/>
                <br></br> <button type="submit">Add Expense</button>

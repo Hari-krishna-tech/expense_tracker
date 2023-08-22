@@ -32,5 +32,92 @@
 }
 
 .visualize_monthly .selector #select {
-    background-color: aqua;
+    background-color: greenyellow;
 }
+
+/* VisualizeMonthly container */
+.visualize_monthly {
+    background-color: grey;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 8px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Date selector container */
+  .date-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Date selector form elements */
+  .date-selector form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .date-selector select,
+  .date-selector button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Chart selector container */
+  .chart-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Selector options */
+  .pie_chart,
+  .bar_graph {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  /* Selected option style */
+  .select {
+    background-color: #007bff;
+    color: white;
+  }
+  
+
+  /* Date selector container */
+.date_selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Date selector form */
+  .date_selector form {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Date selector form elements */
+  .date_selector select,
+  .date_selector button {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Date selector button style */
+  .date_selector button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .date_selector button:hover {
+    background-color: #0056b3;
+  }
+  

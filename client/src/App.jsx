@@ -6,13 +6,14 @@ import Login from './components/login/Login';
 import ProtectedRoute from './ProtectedRoute';
 import Visualize from "./components/visualize/Visualize.jsx";
 // import Nav from "./components/Nav/Nav.jsx";
+import "./App.css";
 
 const App = () => {
 
 
 
     return (  
-        <div>
+        <div className="App">
       
         <Switch>
             <ProtectedRoute path="/home" component={Home}/>

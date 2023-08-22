@@ -1,0 +1,59 @@
+/* Login container */
+.login {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Login title */
+  .login h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form labels */
+  .login label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Form inputs */
+  .login input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Submit button */
+  .login button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .login button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Signup button */
+  .login button:last-child {
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .login button:last-child:hover {
+    text-decoration: underline;
+  }
+  

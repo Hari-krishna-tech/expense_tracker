@@ -23,8 +23,10 @@ const Visualize = () => {
 
     
     return (
+        <div>
+        <Nav/>
         <div className="visualize">
-            <Nav/>
+           
             <h1>Visualize</h1>
             <div className="selector">
                 <div className= {"total"} id={total?"select": ""}  onClick={()=>setTotal(true)}>Total</div>
@@ -33,6 +35,7 @@ const Visualize = () => {
             {total ? <VisualizeTotal/>: <VisualizeMontly/>
             }
             
+        </div>
         </div>
     )
 }

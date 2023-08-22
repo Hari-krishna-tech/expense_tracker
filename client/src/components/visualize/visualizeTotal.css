@@ -32,5 +32,36 @@
 }
 
 .visualize_total .selector #select {
-    background-color: aqua;
+    background-color: greenyellow;
 }
+
+/* VisualizeTotal container */
+.visualize_total {
+    background-color: grey;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 8px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Selector container */
+  .selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Selector options */
+  .selector .pie_chart,
+  .selector .bar_graph {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  /* Selected option style */
+  .selector .select {
+    background-color: #007bff;
+    color: white;
+  }
+  

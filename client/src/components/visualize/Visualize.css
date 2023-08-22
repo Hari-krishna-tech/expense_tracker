@@ -12,7 +12,7 @@
 .visualize .selector .total {
     text-align: center;
     margin: 0 10px;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 600;
     padding: 10px;
     width: 100px;
@@ -23,7 +23,7 @@
 .visualize .selector .monthly {
     text-align: center;
     margin: 0 10px;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: 600;
     padding: 10px;
     width: 100px;
@@ -34,3 +34,44 @@
 .visualize .selector #select {
     background-color: aqua;
 }
+
+/* Visualize container */
+.visualize {
+    /* background-color: #f7f7f7; */
+    padding: 20px;
+  }
+  
+  /* Visualize title */
+  .visualize h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Selector container */
+  .selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Selector options */
+  .selector .total, .selector .monthly {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  /* Selected option style */
+  .selector .select {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Visualize components */
+  .visualize-total,
+  .visualize-monthly {
+    /* Add styling for VisualizeTotal and VisualizeMonthly components */
+  }
+  

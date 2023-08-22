@@ -1,14 +1,17 @@
-FROM node:alpine
+# Use an official Node.js runtime as the base image
+FROM node:14 as build
 
-# Create app directory as a working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# need for copying files from the package.json package-lock.json is speed up the build process
-COPY package.json ./
-COPY package-lock.json ./
-# Copy all the files from the current directory to the working directory inside the container
+# Copy package.json and package-lock.json to the container
+COPY ./package*.json ./
+
+# Install client dependencies
+RUN npm install
+
+# Copy all files from the client directory to the container
 COPY ./ ./
-# Install all the dependencies
-RUN npm i
-# run the command to start the server
-CMD ["npm", "run", "start"]
+
+# Build the React app
+CMD ["npm", "run", "build"]

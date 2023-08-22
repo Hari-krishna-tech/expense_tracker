@@ -7,7 +7,7 @@ import './visualizeTotal.css';
 
 
 const VisualizeMontly = () => {
-    const [data, setData] = useState([["Type", "Amount"]]);
+    const [data, setData] = useState([]);
     const [bar, setBar] = useState(false);
     const token = Cookies.get('token');
   // console.log(token);
@@ -17,11 +17,22 @@ const VisualizeMontly = () => {
 
 
 
+    const barOptions = {
+        title: "My Expenses",
+        hAxis: {
+            title: 'Amount',
+            minValue: 0,
+        },
+        vAxis: {
+            title: 'Type',
+        },
+    }
+
 
     useEffect(()=>{
         const getData = async ()=>{
             const expenses = await getTotalExpenses(token);
-        
+           
             setData([["Type", "Amount"]])
             Object.keys(expenses).forEach((key)=>{
                 const expense = expenses[key].totalAmount;
@@ -57,7 +68,7 @@ const VisualizeMontly = () => {
             <Chart
                 chartType="BarChart"
                 data={data}
-                options={options}
+                options={barOptions}
                 width={"100%"}
                 height={"400px"}
             />

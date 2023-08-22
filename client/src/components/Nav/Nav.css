@@ -13,7 +13,7 @@
 
 .nav .link {
     text-decoration: none;
-    color: #000;
+    color: #ccc;
 }
 
 .nav .link:hover {
@@ -23,3 +23,58 @@
 .nav .logout {
     cursor: pointer;
 }
+
+
+/* NavBar container */
+.nav {
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  /* Logo link */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Links */
+  .link {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Hi username */
+  .nav p {
+    margin: 0;
+    margin-right: 20px;
+  }
+  
+  /* Logout link */
+  .logout {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Hover effects */
+  .link:hover, .logout:hover {
+    color: #ff9900;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .link, .logout {
+      margin: 5px 0;
+    }
+  }
+  
