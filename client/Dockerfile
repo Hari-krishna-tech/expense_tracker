@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as the base image
-FROM node:14 as build
+FROM node:12.2.0-alpine as builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -11,7 +11,13 @@ COPY ./package*.json ./
 RUN npm install
 
 # Copy all files from the client directory to the container
-COPY ./ ./
+COPY . .
 
 # Build the React app
-CMD ["npm", "run", "build"]
+RUN npm run build
+
+FROM nginx
+EXPOSE 3000
+# Use an official Nginx runtime as the base image
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build /usr/share/nginx/html
