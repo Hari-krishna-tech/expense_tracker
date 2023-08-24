@@ -1,19 +1,17 @@
-# Use an official Node.js runtime as the base image
-FROM node:14
+FROM node:alpine
 
-# Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the container
-COPY ./package*.json ./
+COPY package*.json .
 
-# Install server dependencies
-RUN npm install bcrypt
-RUN npm install
+RUN npm ci 
 
+COPY . .
+
+CMD ["npm", "start"]
 
 
-# Copy all files from the server directory to the container
-COPY ./ ./
 
-CMD ["npm", "run", "start"]
+
+
+

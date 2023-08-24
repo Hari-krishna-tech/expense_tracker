@@ -1,25 +1,24 @@
-version: '3'
+version: '3.9'
+
+
 services:
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    depends_on:
-      - server
+  # mongoDB services 
+  mongo_db:
+    container_name: db_container # optional
+    image: mongo:latest
+    restart: always
+    volumes: 
+      - mongo_db:/data/db
 
-  server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
+  api:
+    build: ./server
     ports:
-      - "3001:8000"  # Map host port 3001 to container port 8000
-
-  nginx:
-    image: nginx:latest
-    ports:
-      - "80:80"  # Map host port 80 to container port 80
-    volumes:
-      - ./nginx-config:/etc/nginx/conf.d  # Mount the NGINX configuration
-      - ./client/build:/var/www/html  # Mount the built React app
+      - 8000:8000
+    environment:
+      MONGODB_URI: mongodb://mongo_db:27017 # service name or container name
+      JWT_SECRET: loremdsfdsfdsfdsfdsfdsfdsfdsf
     depends_on:
-      - client
+      - mongo_db
+volumes: 
+  mongo_db: {}
+
