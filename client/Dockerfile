@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ./package*.json ./
 
 # Install client dependencies
-RUN npm ci
+RUN npm i
 
 # Copy all files from the client directory to the container
 COPY ./ ./
