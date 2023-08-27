@@ -11,7 +11,7 @@ COPY ./package*.json ./
 RUN npm install
 
 # Copy all files from the client directory to the container
-COPY . .
+COPY ./ ./
 
 # Build the React app
 RUN npm run build

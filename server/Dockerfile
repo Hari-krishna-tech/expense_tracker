@@ -2,11 +2,11 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json .
+COPY package*.json ./
 
 RUN npm ci 
 
-COPY . .
+COPY ./ ./
 
 CMD ["npm", "start"]
 
